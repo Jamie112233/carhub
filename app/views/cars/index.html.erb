@@ -1,0 +1,12 @@
+<h1>Cars</h1>
+
+<%= form_with(url: cars_path, method: "get") do %>
+  <%= select_tag(:manufacturer_id, options_for_select(@car_manufacturers.map { |m| [m.name, m.id] }, params[:manufacturer_id]), prompt: "Filter by manufacturer") %>
+  <%= submit_tag("Filter") %>
+<% end %>
+
+<ul>
+  <% @cars.each do |car| %>
+    <li><%= link_to car.name, car_path(car) %></li>
+  <% end %>
+</ul>

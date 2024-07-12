@@ -1,0 +1,30 @@
+<h1>Edit Car Manufacturer</h1>
+
+<%= form_with(model: @car_manufacturer, local: true) do |form| %>
+  <% if @car_manufacturer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car_manufacturer.errors.count, "error") %> prohibited this car manufacturer from being saved:</h2>
+      <ul>
+        <% @car_manufacturer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', car_manufacturer_path(@car_manufacturer) %>

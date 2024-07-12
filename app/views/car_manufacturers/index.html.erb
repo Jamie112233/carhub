@@ -1,0 +1,12 @@
+<h1>Car Manufacturers</h1>
+
+<%= form_with(url: car_manufacturers_path, method: "get") do %>
+  <%= text_field_tag(:search, params[:search], placeholder: "Search by manufacturer name") %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<ul>
+  <% @car_manufacturers.each do |manufacturer| %>
+    <li><%= link_to manufacturer.name, car_manufacturer_path(manufacturer) %></li>
+  <% end %>
+</ul>

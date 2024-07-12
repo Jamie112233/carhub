@@ -1,0 +1,22 @@
+<h1><%= @car_manufacturer.name %></h1>
+<p>Details about the car manufacturer will go here.</p>
+
+<h2>Cars</h2>
+<% if @cars.present? %>
+  <ul>
+    <% @cars.each do |car| %>
+      <li>
+        <%= link_to car.name, car_path(car) %>
+        <% if car.image.attached? %>
+          <%= image_tag car.image %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @cars %>
+<% else %>
+  <p>No cars found for this manufacturer.</p>
+<% end %>
+
+<%= link_to 'Edit', edit_car_manufacturer_path(@car_manufacturer) %> |
+<%= link_to 'Back', car_manufacturers_path %>
