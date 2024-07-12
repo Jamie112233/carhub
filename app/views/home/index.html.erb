@@ -1,0 +1,18 @@
+<h1>Welcome to CarHub</h1>
+<p>Your one-stop solution for car information.</p>
+
+<%= form_with(url: car_manufacturers_path, method: "get") do %>
+  <%= text_field_tag(:search, params[:search], placeholder: "Search car manufacturers") %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if @car_manufacturers.present? %>
+  <h2>Popular Car Manufacturers</h2>
+  <ul>
+    <% @car_manufacturers.each do |manufacturer| %>
+      <li><%= link_to manufacturer.name, car_manufacturer_path(manufacturer) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No car manufacturers found.</p>
+<% end %>
