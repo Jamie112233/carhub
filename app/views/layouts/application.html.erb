@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Carhub</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CarHub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %> <!-- Include Bootstrap styles -->
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <%= link_to 'CarHub', root_path, class: 'navbar-brand' %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <%= link_to 'Home', root_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'About', about_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Car Manufacturers', car_manufacturers_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Cars', cars_path, class: 'nav-link' %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container mt-4">
+      <%= yield %>
+    </div>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
