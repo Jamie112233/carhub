@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Details</title>
+</head>
+<body>
+  <h2>Car Details</h2>
+  <% if @cars.any? %>
+    <ul>
+      <% @cars.each do |car| %>
+        <li>
+          <h3><%= car.name %></h3>
+          <ul>
+            <li><strong>Price:</strong> <%= number_to_currency(car.price) %></li>
+            <li><strong>Mileage:</strong> <%= car.mileage %> miles</li>
+            <li><strong>Year:</strong> <%= car.year %></li>
+            <li><strong>Color:</strong> <%= car.color %></li>
+            <% if car.image.attached? %>
+              <li><%= image_tag(car.image.variant(resize: "300x200")) %></li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No car found.</p>
+  <% end %>
+
+  <%= link_to 'Back', cars_path %>
+
+  <% if @reviews.present? %>
+    <h3>Reviews</h3>
+    <ul>
+      <% @reviews.each do |review| %>
+        <li>
+          <strong>Author:</strong> <%= review['author'] %><br>
+          <strong>Content:</strong> <%= review['content'] %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No reviews available.</p>
+  <% end %>
+</body>
+</html>
