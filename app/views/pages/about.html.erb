@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About CarHub</title>
+</head>
+<body>
+  <h1>About CarHub</h1>
+  <p>
+    CarHub is a web application that provides information about car manufacturers and their car models.
+    The data is generated using the Faker gem to simulate real-world data.
+  </p>
+
+  <h2>Data Sources</h2>
+  <p>We use the Faker gem to generate the following datasets:</p>
+  <ul>
+    <li><strong>Car Manufacturers:</strong> Includes the name and country of each manufacturer.</li>
+    <li><strong>Cars:</strong> Includes the name, year, and associated manufacturer for each car model.</li>
+  </ul>
+
+  <h2>Database Schema</h2>
+  <p>
+    Our database schema is designed to capture the relationships between car manufacturers and cars. Below is the Entity-Relationship Diagram (ERD) that represents our schema:
+  </p>
+  <p>
+    <img src="<%= asset_path 'erd.png' %>" alt="Database ERD">
+  </p>
+</body>
+</html>
